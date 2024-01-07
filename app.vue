@@ -1,5 +1,10 @@
 <template>
   <div>
-    <NuxtWelcome />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
   </div>
 </template>
+<script setup lang="ts">
+import { NuxtLayout, NuxtPage } from '#components'
+</script>
