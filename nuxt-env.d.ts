@@ -1,6 +1,3 @@
-import { DefaultLocaleMessageSchema } from 'vue-i18n'
-import { QuillEditor } from '@vueup/vue-quill'
-
 declare module '@vue/runtime-core' {
 }
 

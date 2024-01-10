@@ -21,12 +21,18 @@
       "#pages/*": ["./node_modules/nuxt/dist/pages/runtime/*"],
       "#types": ["./types"],
       "#types/*": ["./types/*"],
+      "#stores": ["./stores"],
+      "#stores/*": ["./stores/*"],
       "#app": ["./node_modules/nuxt/dist/app"],
       "#app/*": ["./node_modules/nuxt/dist/app/*"],
       "#imports": [".nuxt/imports"],
       "#build": [".nuxt"],
       "#build/*": [".nuxt/*"],
-      "#components": [".nuxt/components"]
+      "#components": [".nuxt/components"],
+      "#fake-db": ["./fake-db"],
+      "#fake-db/*": ["./fake-db/*"],
+      "#api": ["./api"],
+      "#api/*": ["./api/*"]
     }
   },
   "exclude": ["./node_modules"],

@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { QLayout, QPageContainer, QPage } from 'quasar'
+import { ref } from '#imports'
+import { useUserStore } from '@/stores'
 
+const userStore = useUserStore()
 const login = ref(null)
 const loginRef = ref(null)
 const password = ref(null)
 const passwordRef = ref(null)
 const error = ref(false)
 
-function loginHandler() {
-  loginRef.value.validate()
-  passwordRef.value.validate()
-
+const loginHandler = async () => {
   if (loginRef.value.hasError || passwordRef.value.hasError) {
     error.value = true
   } else {
-    console.log(login.value, password.value)
+    const { data } = await userStore.login(login.value, password.value)
+    error.value = !data?.user
   }
 }
 </script>
@@ -24,7 +24,7 @@ function loginHandler() {
   <q-layout>
     <q-page-container>
       <q-page class="bg-grey-2 window-height window-width row justify-center items-center">
-        <div class="column col col-sm-6 col-md-4 q-mx-md">
+        <div class="column col col-sm-6 col-md-3 q-mx-lg">
           <div class="row full-width">
             <h5 class="text-h5 text-dark text-weight-bold text-center full-width q-my-md">Webtronics</h5>
           </div>
@@ -38,7 +38,6 @@ function loginHandler() {
                     square
                     filled
                     clearable
-                    :error="error"
                     type="text"
                     label="Login"
                     lazy-rules
@@ -50,13 +49,12 @@ function loginHandler() {
                     square
                     filled
                     clearable
-                    :error="error"
-                    error-message="Login or password is incorrect"
                     type="password"
                     label="Password"
                     lazy-rules
                     :rules="[val => (val && val.length > 4) || 'Password is too short']"
                   />
+                  <div v-if="error" class="text-negative text-caption">Login or password is wrong</div>
                   <q-card-actions class="q-ml-md q-pa-none">
                     <q-btn
                       unelevated

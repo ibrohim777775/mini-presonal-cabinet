@@ -4,8 +4,15 @@ import { defineNuxtConfig } from 'nuxt/config'
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
-    'nuxt-quasar-ui'
+    'nuxt-quasar-ui',
+    '@pinia/nuxt'
   ],
+  plugins: [
+    // { src: '~/plugins/mock-api' }
+  ],
+  quasar: {
+    plugins: ['Notify']
+  },
   typescript: {
     typeCheck: true
   }
