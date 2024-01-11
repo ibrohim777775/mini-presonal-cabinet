@@ -5,7 +5,7 @@ export const users = [
     email: 'jondoe@example.com',
     login: 'admin',
     password: 'admin',
-    photo: null,
+    photo: 'https://cdn.quasar.dev/img/boy-avatar.png',
     phone: '+998993960990'
   }
 ]

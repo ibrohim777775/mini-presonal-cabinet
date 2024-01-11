@@ -25,7 +25,7 @@ watch(() => alertStore.messages.length, () => {
 </script>
 
 <template>
-  {{ messages }}
+  <section></section>
 </template>
 
 <style scoped>

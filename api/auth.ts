@@ -13,7 +13,6 @@ export const login = async (login: string, password: string) => {
     const user = _.cloneDeep(users.find(u => u.login === login && u.password === password))
 
     const error = []
-
     if (!user) {
       error.push('Login or password is incorrect')
     }

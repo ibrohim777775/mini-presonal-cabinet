@@ -1,11 +1,12 @@
 import { defineStore } from 'pinia'
-import { ref } from '#imports'
+import { ref, useRouter } from '#imports'
 import type { IUser } from '#types'
-import { setTokens, getAccessToken } from '@/utils/tokens'
+import { setTokens, getAccessToken, cleanTokensData } from '@/utils/tokens'
 import { login as loginApi, check } from '@/api/auth'
 
 export const useUserStore = defineStore('userStore', () => {
   const user = ref<IUser | null>(null)
+  const router = useRouter()
 
   const setUser = (newUser: IUser | null) => {
     user.value = newUser
@@ -20,14 +21,26 @@ export const useUserStore = defineStore('userStore', () => {
     return { status, data }
   }
 
+  const signOut = () => {
+    setUser(null)
+    cleanTokensData()
+    if (router.path !== '/login') {
+      router.push('/login')
+    }
+  }
+
   const checkUser = async () => {
     // @ts-ignore
     const token: string = getAccessToken()
     const { status, data } = await check(token)
-    if (data.user) {
-      setUser(data.user)
+    if (token && data) {
+      setUser(data)
+      // router.push('/')
+    } else {
+      signOut()
     }
-    return { status, data }
+    // return { status, data }
   }
-  return { user, setUser, login, checkUser }
+
+  return { user, setUser, login, checkUser, signOut }
 })
