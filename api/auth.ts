@@ -4,9 +4,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { api } from '#imports'
 import { users } from '@/fake-db/users'
 
+const mock = new MockAdapter(api, { onNoMatch: 'passthrough' })
 export const login = async (login: string, password: string) => {
-  const mock = new MockAdapter(api, { onNoMatch: 'passthrough' })
-
   mock.onPost('/api/auth').reply(config => {
     const data = JSON.parse(config.data)
     const { login, password } = data
@@ -41,8 +40,6 @@ export const login = async (login: string, password: string) => {
 }
 
 export const check = async (token: string) => {
-  const mock = new MockAdapter(api, { onNoMatch: 'passthrough' })
-
   // @ts-ignore
   mock.onPost('/api/auth/check').reply(config => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars

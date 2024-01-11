@@ -1,5 +1,6 @@
 <script setup>
 import { definePageMeta, useHead } from '#imports'
+import { TicketsList } from '#components'
 
 definePageMeta({
   name: 'aboutUs',
@@ -12,9 +13,14 @@ useHead({
 </script>
 
 <template>
-  <h1>Tickets</h1>
+  <h1 class="tickets__title">Tickets table</h1>
+  <tickets-list />
 </template>
 
 <style scoped>
-
+.tickets__title{
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 125%;
+}
 </style>
