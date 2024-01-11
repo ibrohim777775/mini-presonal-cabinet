@@ -1,23 +1,34 @@
 <script setup lang="ts">
 import { QLayout, QPageContainer, QPage } from 'quasar'
-import { ref } from '#imports'
+import { definePageMeta, ref, useRouter } from '#imports'
 import { useUserStore } from '@/stores'
 
 const userStore = useUserStore()
-const login = ref(null)
+const login = ref<string | null>(null)
 const loginRef = ref(null)
 const password = ref(null)
 const passwordRef = ref(null)
 const error = ref(false)
+const router = useRouter()
 
 const loginHandler = async () => {
   if (loginRef.value.hasError || passwordRef.value.hasError) {
     error.value = true
   } else {
     const { data } = await userStore.login(login.value, password.value)
+    if (data?.user) {
+      router.push('/')
+    }
     error.value = !data?.user
   }
 }
+
+// @ts-ignore
+definePageMeta({
+  layout: false,
+  name: 'login',
+  breadcrumbs: 'about us'
+})
 </script>
 
 <template>
