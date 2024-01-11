@@ -1,10 +1,9 @@
-<script setup lang="ts">
+<script setup>
 import { QLayout, QPageContainer, QPage } from 'quasar'
-import { definePageMeta, ref, useRouter } from '#imports'
-import { useUserStore } from '@/stores'
+import { definePageMeta, useUserStore, ref, useHead, useRouter } from '#imports'
 
 const userStore = useUserStore()
-const login = ref<string | null>(null)
+const login = ref(null)
 const loginRef = ref(null)
 const password = ref(null)
 const passwordRef = ref(null)
@@ -23,11 +22,13 @@ const loginHandler = async () => {
   }
 }
 
-// @ts-ignore
 definePageMeta({
   layout: false,
   name: 'login',
   breadcrumbs: 'about us'
+})
+useHead({
+  title: 'Sign in | Webtronics'
 })
 </script>
 

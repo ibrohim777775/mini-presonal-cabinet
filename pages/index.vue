@@ -1,7 +1,10 @@
-<script setup lang="ts">
+<script setup>
 import { QLayout, QPageContainer, QPage } from 'quasar'
+import { useHead } from '#imports'
 
-const a = 42
+useHead({
+  title: 'Home | Webtronics'
+})
 </script>
 
 <template>
