@@ -1,8 +1,6 @@
-<script setup lang="ts">
-import { ref, useUserStore } from '#imports'
+<script setup>
+import { ref } from '#imports'
 import { HeaderOfLayout, ShowBreadcrumbs, LeftSidebar } from '#components'
-
-const userStore = useUserStore()
 
 const leftDrawerOpen = ref(false)
 const toggleLeftDrawer = () => {

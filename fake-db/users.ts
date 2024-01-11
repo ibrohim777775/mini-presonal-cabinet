@@ -6,6 +6,8 @@ export const users = [
     login: 'admin',
     password: 'admin',
     photo: 'https://cdn.quasar.dev/img/boy-avatar.png',
-    phone: '+998993960990'
+    phone: '+998993960990',
+    birthday: '01.01.2000',
+    address: 'Tashkent'
   }
 ]
