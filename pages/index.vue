@@ -12,8 +12,8 @@ useHead({
     <q-layout>
       <q-page-container>
         <q-page>
-          <h1>
-            Hello nuxt
+          <h1 class="title">
+            Webtronics mini admin panel
           </h1>
         </q-page>
       </q-page-container>
@@ -22,5 +22,8 @@ useHead({
 </template>
 
 <style scoped>
-
+.title{
+  font-size: 3rem;
+  font-weight: 500;
+}
 </style>

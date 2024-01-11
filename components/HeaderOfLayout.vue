@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores'
 
 const userStore = useUserStore()
@@ -8,15 +7,12 @@ const { user, signOut } = userStore
 const signOutHandler = () => {
   signOut()
 }
-defineProps({
-  toggleLeftDrawer: Function
-})
 </script>
 
 <template>
   <q-header elevated class="bg-primary text-white">
     <q-toolbar>
-      <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
+      <q-btn dense flat round icon="menu" @click="$emit('toggleLeftDrawer')" />
 
       <q-toolbar-title>
         Admin dashboard
@@ -29,8 +25,8 @@ defineProps({
         {{ user?.name }}
         <q-menu auto-close>
           <q-list style="min-width: 100px">
-            <q-item clickable>
-              <q-item-section to="/profile">Profile</q-item-section>
+            <q-item clickable to="/profile">
+              <q-item-section>Profile</q-item-section>
             </q-item>
             <q-item clickable @click="signOutHandler">
               <q-item-section>Exit</q-item-section>

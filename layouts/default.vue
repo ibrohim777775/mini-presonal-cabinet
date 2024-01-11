@@ -11,13 +11,13 @@ const toggleLeftDrawer = () => {
 
 <template>
   <q-layout view="hHh lpR fFf">
-    <header-of-layout :toggle-left-drawer="toggleLeftDrawer" />
+    <header-of-layout @toggle-left-drawer="toggleLeftDrawer" />
     <q-drawer v-model="leftDrawerOpen" show-if-above side="left" bordered>
       <!-- drawer content -->
       <left-sidebar />
     </q-drawer>
 
-    <q-page-container>
+    <q-page-container class="q-mx-lg">
       <show-breadcrumbs />
       <slot />
     </q-page-container>
