@@ -1,6 +1,13 @@
-# Nuxt 3 Minimal Starter
+# Webtronics mini admin panel
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+### Task:
+
+Look at the [Task documentation](https://docs.google.com/document/d/1JwSLMfzVVqZXpbxvU1O4Hs0T7MJJbaJ8MpPdJwXyoPQ/edit)
+
+### Used technologies: 
+[Nuxt js](https://nuxt.com)
+[Quasar](https://quasar.dev/)
+[Pinia](https://pinia.vuejs.org/)
 
 ## Setup
 
